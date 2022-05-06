@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class EnemyController : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private PointList _patrolPoints;
     [SerializeField, Min(1)] private float _moveSpeed = 1;

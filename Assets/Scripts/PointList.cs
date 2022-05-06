@@ -1,38 +1,40 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PointList : MonoBehaviour
 {
-    private List<Point> _points = new List<Point>();
+    private Point[] _points;
     private int _currentPoint = 0;
 
-    public int Count => _points.Count;
+    public int Count => _points.Length;
 
-    private void Start()
+    private void Awake()
     {
-        foreach (Point point in GetComponentsInChildren<Point>())
-        {
-            _points.Add(point);
-        }
+        _points = GetComponentsInChildren<Point>();
     }
 
-    public bool TryGetNextPoint(out Point point)
+    public Point GetNextPoint()
     {
-        point = null;
-
-        if (_points.Count == 0)
+        if (_points.Length == 0)
         {
-            return false;
+            return null;
         }
 
-        point = _points[_currentPoint];
-        _currentPoint++;
-
-        if (_currentPoint >= _points.Count)
+        if (_currentPoint >= _points.Length)
         {
             _currentPoint = 0;
         }
 
-        return true;
+        Point point = _points[_currentPoint];
+
+        _currentPoint++;
+
+        return point;
+    }
+
+    public bool TryGetNextPoint(out Point point)
+    {
+        point = GetNextPoint();
+
+        return point != null;
     }
 }
