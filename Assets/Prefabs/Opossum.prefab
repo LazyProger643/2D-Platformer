@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8965699181567645318}
   - component: {fileID: 8965699181567645339}
   - component: {fileID: 8965699181567645316}
-  - component: {fileID: 8965699181567645338}
+  - component: {fileID: 6887906579983048674}
+  - component: {fileID: 3071227422588654104}
   m_Layer: 6
   m_Name: Opossum
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8965699181567645312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.57, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -152,7 +153,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3724966, y: 1.2522798}
   m_EdgeRadius: 0
---- !u!114 &8965699181567645338
+--- !u!114 &6887906579983048674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,8 +162,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8965699181567645312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ce480eb19bbd284fa3f4e1000a9ef4e, type: 3}
+  m_Script: {fileID: 11500000, guid: b824f52ff4c474d48a28aeaf33baec29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolPoints: {fileID: 0}
+--- !u!114 &3071227422588654104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965699181567645312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c83414b8a0cf241a57c5e4468c9491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _moveSpeed: 4
+  _patrolPoints: {fileID: 0}

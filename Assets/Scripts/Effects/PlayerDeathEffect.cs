@@ -1,0 +1,2 @@
+
+public class PlayerDeathEffect : SpriteEffect { }

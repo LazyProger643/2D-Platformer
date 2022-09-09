@@ -1,5 +1,3 @@
 using UnityEngine;
 
-public class Point : MonoBehaviour
-{
-}
+public class Point : MonoBehaviour { }
