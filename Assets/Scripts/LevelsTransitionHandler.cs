@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using LazyProger.ScenesConstantNames;
 
-public class Gameplay : MonoBehaviour, ISceneLoadHandler<LoadingScreen>
+public class LevelsTransitionHandler : MonoBehaviour, ISceneLoadHandler<LoadingScreen>
 {
     [SerializeField] private int _levelCount;
     [SerializeField] private Player _player;
