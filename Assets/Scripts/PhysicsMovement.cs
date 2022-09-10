@@ -110,11 +110,11 @@ public class PhysicsMovement : MonoBehaviour
             moveVector.x = _targetVelocity.x * Time.deltaTime;
         }
 
-        Movement(moveVector, false);
+        MoveByVector(moveVector, false);
 
         moveVector = Vector2.up * deltaPosition.y;
 
-        Movement(moveVector, true);
+        MoveByVector(moveVector, true);
     }
 
     private void TryStickToGround()
@@ -125,7 +125,7 @@ public class PhysicsMovement : MonoBehaviour
 
             if (hitCount > 0)
             {
-                Movement(Vector2.down, true);
+                MoveByVector(Vector2.down, true);
             }
         }
     }
@@ -135,7 +135,7 @@ public class PhysicsMovement : MonoBehaviour
         return collider.bounds.center.y - collider.bounds.extents.y;
     }
 
-    private void Movement(Vector2 moveVector, bool yMovement)
+    private void MoveByVector(Vector2 moveVector, bool yMovement)
     {
         float distance = moveVector.magnitude;
 
