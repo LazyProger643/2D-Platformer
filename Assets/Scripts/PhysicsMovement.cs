@@ -13,8 +13,8 @@ public class PhysicsMovement : MonoBehaviour
 
     [SerializeField] private UnityEvent Jumped;
     [SerializeField] private UnityEvent BeganToFall;
-    [SerializeField] private UnityEvent<float> Landed;
-    [SerializeField] private UnityEvent<float, bool> MovementChanged;
+    [SerializeField] private UnityEvent Landed;
+    [SerializeField] private UnityEvent<float> MovementChanged;
 
     private const float GroundStickingDistance = 0.5f;
     private const float MinMoveDistance = 0.001f;
@@ -50,7 +50,7 @@ public class PhysicsMovement : MonoBehaviour
 
         if (_wasGrounded == false && _isGrounded)
         {
-            Landed.Invoke(_targetVelocity.x);
+            Landed.Invoke();
         }
 
         if (_isGrounded == false && _oldVelocity.y >= 0 && _velocity.y < 0)
@@ -66,12 +66,11 @@ public class PhysicsMovement : MonoBehaviour
 
     public void OnMove(CallbackContext context)
     {
-        if (context.performed || context.canceled)
-        {
-            _targetVelocity = context.ReadValue<Vector2>() * _movingSpeed;
+        _targetVelocity = context.ReadValue<Vector2>();
+        _targetVelocity.y = 0;
+        _targetVelocity = _targetVelocity.normalized * _movingSpeed;
 
-            MovementChanged.Invoke(_targetVelocity.x, _isGrounded);
-        }
+        MovementChanged.Invoke(_targetVelocity.x);
     }
 
     public void OnJump(CallbackContext context)

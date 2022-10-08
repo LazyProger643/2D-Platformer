@@ -4,10 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerAnimator : MonoBehaviour
 {
-    private const string RunTrigger = "Run";
-    private const string IdleTrigger = "Idle";
+    private const string Running = "Running";
     private const string JumpTrigger = "Jump";
     private const string FallTrigger = "Fall";
+    private const string LandedTrigger = "Landed";
 
     private SpriteRenderer _renderer;
     private Animator _animator;
@@ -20,44 +20,24 @@ public class PlayerAnimator : MonoBehaviour
 
     public void OnJumped()
     {
-        TriggerAnimation(JumpTrigger);
+        _animator.SetTrigger(JumpTrigger);
     }
 
     public void OnBeganToFall()
     {
-        TriggerAnimation(FallTrigger);
+        _animator.SetTrigger(FallTrigger);
     }
 
-    public void OnLanded(float horizontalMovement)
+    public void OnLanded()
     {
-        SetGroundAnimation(horizontalMovement);
+        _animator.SetTrigger(LandedTrigger);
     }
 
-    public void OnMovementChanged(float horizontalMovement, bool isGrounded)
+    public void OnMovementChanged(float horizontalMovement)
     {
+        _animator.SetBool(Running, horizontalMovement != 0);
+
         FlipSpriteAlongDirection(horizontalMovement);
-
-        if (isGrounded)
-        {
-            SetGroundAnimation(horizontalMovement);
-        }
-    }
-
-    private void SetGroundAnimation(float horizontalMovement)
-    {
-        if (horizontalMovement == 0)
-        {
-            TriggerAnimation(IdleTrigger);
-        }
-        else
-        {
-            TriggerAnimation(RunTrigger);
-        }
-    }
-
-    private void TriggerAnimation(string trigger)
-    {
-        _animator.SetTrigger(trigger);
     }
 
     private void FlipSpriteAlongDirection(float horizontalDirection)
